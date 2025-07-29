@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Scoreboard Overlay</title>
+
   <style>
     html, body {
       background: white;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Verdana, sans-serif;
-      font-size: 14px;
     }
 
     scoreboard {
@@ -19,17 +18,17 @@
       max-width: 700px;
       margin: auto;
       background: transparent;
-      }
+    }
 
     body {
       font-family: {{ font_family }};
       padding: 10px;
-      font-size: {{ font_size }} px;
+      font-size: {{ font_size }}px;
     }
 
     table {
       border-collapse: collapse;
-      font-size: {{ font_size }} px;
+      font-size: {{ font_size }}px;
       width: 300px;
       table-layout: fixed;
     }
@@ -69,14 +68,6 @@
       color: #cc0000;
     }
 
-    .table-stars {
-      background-color: {{ stars_bg }};
-    }
-
-    .table-stripes {
-      background-color: {{ stripes_bg }};
-    }
-
     th:nth-child(1), td:nth-child(1) { width: {{ col1_width }}; }
     th:nth-child(2), td:nth-child(2) { width: {{ col2_width }}; }
     th:nth-child(3), td:nth-child(3) {
@@ -96,19 +87,38 @@
       text-align: left;
     }
   </style>
+
+  {% if mock_mode %}
+  <script id="score-data" type="application/json">
+  {{ score_data }}
+  </script>
+  {% endif %}
 </head>
 <body>
   <div id="scoreboard"></div>
 
   <script>
     async function loadScores() {
-      const response = await fetch("{{ google_apps_script_url }}");
-      const data = await response.json();
+      let data = [];
+
+      {% if mock_mode %}
+        const rawJson = document.getElementById("score-data").textContent;
+        data = JSON.parse(rawJson);
+      {% else %}
+        try {
+          const response = await fetch("{{ google_apps_script_url }}");
+          data = await response.json();
+        } catch (err) {
+          console.error("Error fetching live data:", err);
+          data = [];
+        }
+      {% endif %}
+
+      const divisions = {{ divisions | tojson }};
+      const divisionColors = {{ division_colors | tojson }};
 
       const scoreboard = document.getElementById("scoreboard");
       scoreboard.innerHTML = "";
-
-      const divisions = {{ divisions | tojson }};
 
       divisions.forEach(division => {
         const section = document.createElement("div");
@@ -120,7 +130,7 @@
 
         const table = document.createElement("table");
         table.style.marginBottom = "10px";
-        table.classList.add(division === "Stars" ? "table-stars" : "table-stripes");
+        table.style.backgroundColor = divisionColors[division] || "#eee";
 
         const colgroup = document.createElement("colgroup");
         ["{{ col1_width }}", "{{ col2_width }}", "{{ col3_width }}", "{{ col4_width }}"].forEach(width => {
@@ -131,18 +141,15 @@
         table.appendChild(colgroup);
 
         const header = document.createElement("tr");
-        ["Match", "Ends", "", ""].forEach((text, index) => {
+        [division, "Ends", "", ""].forEach((text, index) => {
           const th = document.createElement("th");
-
           if (index === 2) {
-            th.textContent = "";
             th.className = "score-header-red";
           } else if (index === 3) {
-            th.textContent = "";
             th.className = "score-header-blue";
           } else if (text === "Ends") {
-            th.textContent = "Ends";
             th.className = "ends";
+            th.textContent = text;
           } else {
             th.textContent = text;
             th.style.background = "#eee";
@@ -156,7 +163,7 @@
 
           const matchCell = document.createElement("td");
           matchCell.textContent = row.match;
-          matchCell.className = division === "Stars" ? "match-women" : "match-men";
+          matchCell.style.fontWeight = "bold";
           tr.appendChild(matchCell);
 
           const endsCell = document.createElement("td");

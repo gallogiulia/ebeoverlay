@@ -1,18 +1,19 @@
 {
-  "font_size": 11,
-  "font_family": "Segoe UI, Verdana, sans-serif",
-  "score1_color": "red",
-  "score2_color": "blue",
-  "ends_bg": "#fff9cc",
-  "stars_bg": "#ffe0e0",
-  "stripes_bg": "#e0f0ff",
-  "col1_width": "50%",
+  "font_size": 10,
+  "font_family": "Segoe UI",
+  "score1_color": "#fff614",
+  "score2_color": "#ff4e5c",
+  "ends_bg": "#aa7942",
+  "stars_bg": "#00f900",
+  "stripes_bg": "#0433ff",
+  "col1_width": "60%",
   "col2_width": "10%",
   "col3_width": "7%",
   "col4_width": "7%",
-  "divisions": ["Stars", "Stripes"],
-  "google_apps_script_url": "https://ebeoverlay.netlify.app/.netlify/functions/scores"
-
-  }
-
-
+  "divisions": [
+    "Stars",
+    "Stripes"
+  ],
+  "google_apps_script_url": "https://ebeoverlay.netlify.app/.netlify/functions/scores",
+  "mock_mode": true
+}

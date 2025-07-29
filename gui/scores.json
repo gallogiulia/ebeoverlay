@@ -1,0 +1,37 @@
+[
+  {
+    "division": "Stars",
+    "match": "Spease v Houston",
+    "ends": 13,
+    "score1": 15,
+    "score2": 10
+  },
+  {
+    "division": "Stars",
+    "match": "Farris v Vizenor",
+    "ends": 13,
+    "score1": 9,
+    "score2": 14
+  },
+  {
+    "division": "Stars",
+    "match": "Buchanan v Hall",
+    "ends": 13,
+    "score1": 14,
+    "score2": 14
+  },
+  {
+    "division": "Stripes",
+    "match": "Barkovich v Hedgespeth",
+    "ends": 14,
+    "score1": 12,
+    "score2": 13
+  },
+  {
+    "division": "Stripes",
+    "match": "Wright v Rinaldi",
+    "ends": 15,
+    "score1": 16,
+    "score2": 15
+  }
+]

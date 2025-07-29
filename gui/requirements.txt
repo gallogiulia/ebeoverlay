@@ -1,3 +1,5 @@
-PySide6
 Jinja2
 GitPython
+tkhtmlview
+PyQt5>=5.15.0
+PyQtWebEngine>=5.15.0
