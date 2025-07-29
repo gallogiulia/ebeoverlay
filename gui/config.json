@@ -1,0 +1,17 @@
+{
+  "font_size": 11,
+  "font_family": "Segoe UI, Verdana, sans-serif",
+  "score1_color": "red",
+  "score2_color": "blue",
+  "ends_bg": "#fff9cc",
+  "stars_bg": "#ffe0e0",
+  "stripes_bg": "#e0f0ff",
+  "col1_width": "50%",
+  "col2_width": "10%",
+  "col3_width": "7%",
+  "col4_width": "7%",
+  "divisions": ["Stars", "Stripes"],
+  "google_apps_script_url": "https://script.google.com/macros/s/AKfycbzyWVzWFVFUwHbBe_UhD7hKkM2WmJKfHSYOwt8oJa7FTCx_-SqCbo2fwAQ9qqJ8BIFc/exec"
+
+}
+
