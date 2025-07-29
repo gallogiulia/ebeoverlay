@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Scoreboard Overlay</title>
   <style>
     html, body {
-      background: transparent !important;
+      background: white;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Verdana, sans-serif;
+      font-size: 14px;
     }
+
+    scoreboard {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: transparent;
+      }
 
     body {
       font-family: {{ font_family }};
@@ -16,7 +29,7 @@
 
     table {
       border-collapse: collapse;
-      font-size: {{ font_size }}px;
+      font-size: {{ font_size }} px;
       width: 300px;
       table-layout: fixed;
     }

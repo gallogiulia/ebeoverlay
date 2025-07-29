@@ -11,7 +11,8 @@
   "col3_width": "7%",
   "col4_width": "7%",
   "divisions": ["Stars", "Stripes"],
-  "google_apps_script_url": "https://script.google.com/macros/s/AKfycbzyWVzWFVFUwHbBe_UhD7hKkM2WmJKfHSYOwt8oJa7FTCx_-SqCbo2fwAQ9qqJ8BIFc/exec"
+  "google_apps_script_url": "https://ebeoverlay.netlify.app/.netlify/functions/scores"
 
-}
+  }
+
 

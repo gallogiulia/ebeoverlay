@@ -1,0 +1,49 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.env
+.venv/
+venv/
+.DS_Store
+
+# === VSCode ===
+.vscode/
+
+# === Logs and OS junk ===
+*.log
+*.swp
+*.swo
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# === Node / Netlify ===
+node_modules/
+netlify/.netlify/
+functions/node_modules/
+*.lock
+
+# === Build / Deployment Artifacts ===
+dist/
+build/
+.cache/
+.nyc_output/
+coverage/
+public/
+
+# === Preview Output ===
+preview.html
+*.tmp
+*.bak
+
+# === Mac ===
+.DS_Store
+
+# === Environment Files ===
+.env.local
+.env.production
+.env.*
