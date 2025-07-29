@@ -63,15 +63,48 @@ python gui.py
 ```
 
 ## 🛠 Deployment
-GitHub Pages
-The overlay/index.html is deployed using GitHub Pages
 
-EBE pushes updates automatically if GitHub token or SSH is configured
+### GitHub Pages
+The overlay/index.html is deployed using GitHub Pages. EBE pushes updates automatically if GitHub token or SSH is configured
 
-Netlify
-The proxy/ folder contains CORS logic deployed via Netlify
+### Netlify 🌐 Netlify (CORS Proxy)
+The proxy/ folder contains a simple CORS proxy that fetches JSON data from your deployed Google Apps Script and makes it readable for GitHub Pages (or any browser-based frontend).
 
-Manual or automatic deploy supported
+#### 📦 Setup (First Time)
+
+##### 1. Navigate to the folder:
+```bash
+cd proxy
+```
+
+##### 2. Install dependencies (if not done yet):
+```bash
+npm install
+```
+This installs:
+- node-fetch – for making HTTP requests
+- netlify-cli – for local dev and deploy (from devDependencies)
+
+##### 3. Authenticate with Netlify (first time only):
+```bash
+npx netlify login
+```
+#### 🚀 Deploy to Netlify
+To deploy your CORS proxy:
+```bash
+npm run deploy
+```
+This is a shortcut for:
+```bash
+npx netlify deploy --dir=. --prod
+```
+
+#### 🔁 Linking the Proxy to Your Overlay
+In your overlay/index.html, make sure the fetch URL uses the Netlify-deployed CORS URL, like:
+```js
+const response = await fetch("https://your-netlify-url.netlify.app/your-endpoint");
+```
+
 
 ## 🧠 Roadmap
  Template + config system

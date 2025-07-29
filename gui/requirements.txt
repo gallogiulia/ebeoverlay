@@ -1,0 +1,3 @@
+PySide6
+Jinja2
+GitPython
