@@ -1,5 +1,7 @@
 import json
 import os
+import sys
+
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QLabel, QLineEdit, QPushButton,
     QVBoxLayout, QHBoxLayout, QColorDialog, QListWidget, QListWidgetItem,
@@ -10,15 +12,19 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
 from render import render_template
 from PyQt5.QtWidgets import QComboBox
-CONFIG_FILE = "config.json"
+
+overlay_type = sys.argv[1] if len(sys.argv) > 1 else "playdowns"
 
 class EBEGui(QWidget):
-    def __init__(self):
+    def __init__(self, overlay_type="playdowns"):  # 👈 Add this parameter
         super().__init__()
+        self.overlay_type = overlay_type
         self.setWindowTitle("EBE – Easy Broadcast Editor")
         self.resize(600, 800)
         self.load_config()
         self.init_ui()
+        self.overlay_type = "playdowns"  # or "nationals" — passed in when calling the GUI
+
 
     def font_size_picker(self):
         layout = QHBoxLayout()
@@ -47,8 +53,12 @@ class EBEGui(QWidget):
 
 
     def load_config(self):
-        with open(CONFIG_FILE, "r") as f:
+        with open(f"{self.overlay_type}/config.json") as f:
             self.config = json.load(f)
+
+        with open(f"{self.overlay_type}/scores.json") as f:
+            self.scores = json.load(f)
+
 
     def init_ui(self):
         layout = QVBoxLayout()
@@ -168,7 +178,7 @@ class EBEGui(QWidget):
         self.config["font_family"] = self.font_family_box.currentText()
 
 
-        with open(CONFIG_FILE, "w") as f:
+        with open(f"{self.overlay_type}/config.json", "w") as f:
             json.dump(self.config, f, indent=2)
 
         render_template()
@@ -177,6 +187,6 @@ class EBEGui(QWidget):
 
 if __name__ == "__main__":
     app = QApplication([])
-    window = EBEGui()
+    window = EBEGui(overlay_type)
     window.show()
     app.exec()

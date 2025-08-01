@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scoreboard Overlay</title>
+
+  <style>
+    html, body {
+      background: white;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Verdana, sans-serif;
+    }
+
+    scoreboard {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: transparent;
+    }
+
+    body {
+      font-family: Verdana;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    table {
+      border-collapse: collapse;
+      font-size: 14px;
+      width: 300px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      padding: 2px 4px;
+      border: 1px solid #ccc;
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .ends {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .score-header-red {
+      color: white;
+      font-weight: bold;
+      background-color: #cc0000;
+    }
+
+    .score-header-blue {
+      color: white;
+      font-weight: bold;
+      background-color: #ffe352;
+    }
+
+    .match-men {
+      font-weight: bold;
+      color: #0055cc;
+    }
+
+    .match-women {
+      font-weight: bold;
+      color: #cc0000;
+    }
+
+    th:nth-child(1), td:nth-child(1) { width: 120px; }
+    th:nth-child(2), td:nth-child(2) { width: 40px; }
+    th:nth-child(3), td:nth-child(3) {
+      width: 60px;
+      background-color: white !important;
+    }
+    th:nth-child(4), td:nth-child(4) {
+      width: 60px;
+      background-color: white !important;
+    }
+
+    .scoreboard-header {
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 4px;
+      text-align: left;
+    }
+  </style>
+
+  
+  <script id="score-data" type="application/json">
+  [{"division": "Stars", "match": "Spease v Houston", "ends": 13, "score1": 15, "score2": 10}, {"division": "Stars", "match": "Farris v Vizenor", "ends": 13, "score1": 9, "score2": 14}, {"division": "Stars", "match": "Buchanan v Hall", "ends": 13, "score1": 14, "score2": 14}, {"division": "Stripes", "match": "Barkovich v Hedgespeth", "ends": 14, "score1": 12, "score2": 13}, {"division": "Stripes", "match": "Wright v Rinaldi", "ends": 15, "score1": 16, "score2": 15}]
+  </script>
+  
+</head>
+<body>
+  <div id="scoreboard"></div>
+
+  <script>
+    async function loadScores() {
+      let data = [];
+
+      
+        const rawJson = document.getElementById("score-data").textContent;
+        data = JSON.parse(rawJson);
+      
+
+      const divisions = ["Stars", "Stripes"];
+      const divisionColors = {"Stars": "#333399", "Stripes": "#cc3333"};
+
+      const scoreboard = document.getElementById("scoreboard");
+      scoreboard.innerHTML = "";
+
+      divisions.forEach(division => {
+        const section = document.createElement("div");
+
+        const heading = document.createElement("h2");
+        heading.textContent = division;
+        heading.className = "scoreboard-header";
+        section.appendChild(heading);
+
+        const table = document.createElement("table");
+        table.style.marginBottom = "10px";
+        table.style.backgroundColor = divisionColors[division] || "#eee";
+
+        const colgroup = document.createElement("colgroup");
+        ["120px", "40px", "60px", "60px"].forEach(width => {
+          const col = document.createElement("col");
+          col.style.width = width;
+          colgroup.appendChild(col);
+        });
+        table.appendChild(colgroup);
+
+        const header = document.createElement("tr");
+        [division, "Ends", "", ""].forEach((text, index) => {
+          const th = document.createElement("th");
+          if (index === 2) {
+            th.className = "score-header-red";
+          } else if (index === 3) {
+            th.className = "score-header-blue";
+          } else if (text === "Ends") {
+            th.className = "ends";
+            th.textContent = text;
+          } else {
+            th.textContent = text;
+            th.style.background = "#eee";
+          }
+          header.appendChild(th);
+        });
+        table.appendChild(header);
+
+        data.filter(row => row.division === division).forEach(row => {
+          const tr = document.createElement("tr");
+
+          const matchCell = document.createElement("td");
+          matchCell.textContent = row.match;
+          matchCell.style.fontWeight = "bold";
+          tr.appendChild(matchCell);
+
+          const endsCell = document.createElement("td");
+          endsCell.textContent = row.ends;
+          endsCell.className = "ends";
+          tr.appendChild(endsCell);
+
+          const score1 = document.createElement("td");
+          score1.textContent = row.score1;
+          score1.style.color = "#cc0000";
+          tr.appendChild(score1);
+
+          const score2 = document.createElement("td");
+          score2.textContent = row.score2;
+          score2.style.color = "#ffe352";
+          tr.appendChild(score2);
+
+          table.appendChild(tr);
+        });
+
+        section.appendChild(table);
+        scoreboard.appendChild(section);
+      });
+    }
+
+    loadScores();
+    setInterval(loadScores, 10000);
+  </script>
+</body>
+</html>

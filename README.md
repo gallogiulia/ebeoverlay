@@ -20,6 +20,50 @@ This is the **centralized repo** that includes:
 
 ---
 
+---
+
+## 🏆 Nationals Overlay Workflow
+
+EBE now supports both **Playdowns** and **Nationals** overlays!
+
+### 📋 How to Use the Nationals Editor
+
+1. **🏆 Build Nationals Overlay**  
+   Launch the Nationals Score Editor to create your `scores.json` file with all the inter-division matches.
+
+2. **⚙️ Generate Nationals Config from Scores**  
+   Parses the `scores.json`, extracts sections/divisions, and generates a valid `config.json`.
+
+3. **🎨 Open Editor**  
+   Launch the visual editor to style your overlay and preview live changes.
+
+### 🧠 Tips & Guidance
+
+- Each Nationals match is between two divisions (e.g. Central vs Northeast).
+- You must complete the `scores.json` before generating the `config.json`.
+- Once you’ve edited and rendered, your overlay (`output.html`) will be ready to publish or upload.
+
+---
+
+## 🔁 Navigation Tips
+
+- All overlay tools now feature a **⬅️ Return to Main Menu** button.
+- The main screen is divided into **Playdowns** and **Nationals** sections for clarity.
+
+---
+
+## 🖥️ Main Screen Buttons (New)
+
+| Button | Purpose |
+|--------|---------|
+| 🆕 Create New Overlay | Resets `config.json` to default |
+| 📁 Upload scores.json | Imports a scores structure file |
+| 🏆 Build Nationals Overlay | Launch guided input for Nationals games |
+| ⚙️ Generate Nationals Config | Builds `config.json` from the scores |
+| 🎨 Open Editor | Customize and preview |
+| ❌ Exit | Close the app |
+
+
 ## 📁 Repo Structure
 
 ebe-overlay/

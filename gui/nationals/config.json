@@ -17,23 +17,23 @@
   "col4_width": "60px",
   "google_apps_script_url": "https://ebeoverlay.netlify.app/.netlify/functions/scores",
   "division1_name": "Central",
-  "division2_name": "Southwest Stripes",
-  "div1_bg": "#929000",
-  "div2_bg": "#34ff4c",
+  "division2_name": "Southwest Stars",
+  "div1_bg": "#4a9a3a",
+  "div2_bg": "#90a1ad",
   "divisions": [
     "Central",
     "Northeast",
     "Northwest",
     "PIMD",
-    "Southwest Stripes",
     "Southwest Stars",
-    "Southcentral",
-    "Southeast"
+    "Southwest Stripes",
+    "Southeast",
+    "Southcentral"
   ],
-  "div3_bg": "#39ffbe",
-  "div4_bg": "#297bff",
-  "div5_bg": "#753eff",
-  "div6_bg": "#ff3d25",
-  "div7_bg": "#fff560",
-  "div8_bg": "#6bff27"
+  "div3_bg": "#242bff",
+  "div4_bg": "#23fcff",
+  "div5_bg": "#ff3b2c",
+  "div6_bg": "#cccccc",
+  "div7_bg": "#fcff0e",
+  "div8_bg": "#ff9505"
 }

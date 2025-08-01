@@ -1,8 +1,8 @@
 {
   "font_size": 14,
-  "font_family": "Segoe UI",
+  "font_family": "Verdana",
   "score1_color": "#cc0000",
-  "score2_color": "#0055cc",
+  "score2_color": "#ffe352",
   "score1_bg": "#ffffff",
   "score2_bg": "#ffffff",
   "ends_bg": "#f0f0f0",
@@ -16,24 +16,12 @@
   "col3_width": "60px",
   "col4_width": "60px",
   "google_apps_script_url": "https://ebeoverlay.netlify.app/.netlify/functions/scores",
-  "division1_name": "Central",
-  "division2_name": "Southwest Stripes",
-  "div1_bg": "#929000",
-  "div2_bg": "#34ff4c",
+  "division1_name": "Stars",
+  "division2_name": "Stripes",
+  "div1_bg": "#333399",
+  "div2_bg": "#cc3333",
   "divisions": [
-    "Central",
-    "Northeast",
-    "Northwest",
-    "PIMD",
-    "Southwest Stripes",
-    "Southwest Stars",
-    "Southcentral",
-    "Southeast"
-  ],
-  "div3_bg": "#39ffbe",
-  "div4_bg": "#297bff",
-  "div5_bg": "#753eff",
-  "div6_bg": "#ff3d25",
-  "div7_bg": "#fff560",
-  "div8_bg": "#6bff27"
+    "Stars",
+    "Stripes"
+  ]
 }

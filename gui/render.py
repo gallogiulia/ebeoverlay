@@ -1,20 +1,19 @@
 from jinja2 import Environment, FileSystemLoader
 import json
 
-CONFIG_FILE = "config.json"
-
 
 def render_template():
     # Load config
-    with open(CONFIG_FILE) as f:
+    with open("playdowns/config.json") as f:
         config = json.load(f)
 
-    mock_mode = config.get("mock_mode", False)
+    mock_mode = config.get("mock_mode", True)
 
     if mock_mode:
         # Load mock data from scores.json
         try:
-            with open("scores.json") as f:
+            with open("playdowns/scores.json") as f:
+
                 score_data = json.load(f)
         except FileNotFoundError:
             score_data = []  # fallback: empty list
@@ -50,7 +49,7 @@ def render_template():
         mock_mode=mock_mode
     )
 
-    with open("preview.html", "w") as f:
+    with open("playdowns/output.html", "w") as f:
         f.write(html)
 
 if __name__ == "__main__":

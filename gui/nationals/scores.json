@@ -1,0 +1,34 @@
+[
+  {
+    "division1": "Southwest Stars",
+    "division2": "Northwest",
+    "match": "Spease v Baxter",
+    "ends": 16,
+    "score1": 17,
+    "score2": 14
+  },
+  {
+    "division1": "Southwest Stripes",
+    "division2": "PIMD",
+    "match": "Farris v Kwan",
+    "ends": 15,
+    "score1": 12,
+    "score2": 18
+  },
+  {
+    "division1": "Southeast",
+    "division2": "Southcentral",
+    "match": "Turner v Morales",
+    "ends": 14,
+    "score1": 10,
+    "score2": 11
+  },
+  {
+    "division1": "Northeast",
+    "division2": "Central",
+    "match": "Li v Stanton",
+    "ends": 13,
+    "score1": 15,
+    "score2": 9
+  }
+]
